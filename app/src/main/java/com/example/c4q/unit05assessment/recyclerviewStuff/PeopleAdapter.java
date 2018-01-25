@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 import com.example.c4q.unit05assessment.R;
 import com.example.c4q.unit05assessment.model.People;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by c4q on 1/24/18.
  */
 
-public class PeopleAdaper extends RecyclerView.Adapter<PeopleViewHolder>{
-    private List<People> peopleList= new ArrayList<>();
+public class PeopleAdapter extends RecyclerView.Adapter<PeopleViewHolder>{
+    private List<People> resultsList;
+
+    public PeopleAdapter(List<People> resultsList) {
+        this.resultsList = resultsList;
+    }
+
     @Override
     public PeopleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View childView= LayoutInflater.from(parent.getContext()).inflate(R.layout.people_itemview, parent, false);
@@ -25,11 +29,12 @@ public class PeopleAdaper extends RecyclerView.Adapter<PeopleViewHolder>{
 
     @Override
     public void onBindViewHolder(PeopleViewHolder holder, int position) {
+        holder.onBind(resultsList.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return resultsList.size();
     }
 }

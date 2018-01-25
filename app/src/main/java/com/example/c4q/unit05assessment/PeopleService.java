@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by c4q on 1/24/18.
@@ -13,6 +14,7 @@ import retrofit2.http.GET;
 
 public interface PeopleService {
     @GET("api/?nat=us&inc=name,location,cell,email,dob,picture&results=20")
-    Call<List<People>> getModel();
+    Call<List<People>> getModel(@Query("results") int results);
+
 
 }

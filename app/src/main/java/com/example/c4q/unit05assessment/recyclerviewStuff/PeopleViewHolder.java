@@ -30,8 +30,8 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
         pic=itemView.findViewById(R.id.pix);
         context= itemView.getContext();
     }
-    public void onBind(People people){
-        name.setText(people.getName());
-        Picasso.with(context).load(people.getPicture()).into(pic);
+    public void onBind( People results){
+        name.setText(results.getName());
+        Picasso.with(context).load(results.getPicture()).into(pic);
     }
 }
