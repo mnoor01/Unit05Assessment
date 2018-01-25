@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 
 import com.example.c4q.unit05assessment.R;
 import com.example.c4q.unit05assessment.model.People;
+import com.example.c4q.unit05assessment.model.Results;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +17,9 @@ import java.util.List;
  */
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleViewHolder>{
-    private List<People> resultsList;
+    private List<Results> resultsList=new ArrayList<>();
 
-    public PeopleAdapter(List<People> resultsList) {
+    public PeopleAdapter(List<Results> resultsList) {
         this.resultsList = resultsList;
     }
 

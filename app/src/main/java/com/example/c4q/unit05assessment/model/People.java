@@ -9,29 +9,9 @@ import java.util.List;
  */
 
 public class People {
-    private String name;
-    private String location;
-    private String email;
-    private String dob;
-    private String picture;
+private List<Results> results;
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public String getPicture() {
-        return picture;
+    public List<Results> getResults() {
+        return results;
     }
 }

@@ -1,13 +1,17 @@
 package com.example.c4q.unit05assessment.recyclerviewStuff;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.c4q.unit05assessment.R;
+import com.example.c4q.unit05assessment.SecondActivity;
 import com.example.c4q.unit05assessment.model.People;
+import com.example.c4q.unit05assessment.model.Results;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -30,8 +34,19 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
         pic=itemView.findViewById(R.id.pix);
         context= itemView.getContext();
     }
-    public void onBind( People results){
+    public void onBind( Results results){
         name.setText(results.getName());
         Picasso.with(context).load(results.getPicture()).into(pic);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(itemView.getContext(),SecondActivity.class);
+
+                intent.putExtra("location",location.getText().toString());
+                intent.putExtra("email",email.getText().toString());
+                intent.putExtra("dob",dob.getText().toString());
+
+            }
+        });
     }
 }

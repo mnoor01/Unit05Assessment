@@ -20,13 +20,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private List<People> peopleList;
+    private People peopleList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        peopleList= new ArrayList<>();
+        peopleList=new People();
         retroFitStuff();
 
     }
@@ -35,20 +35,34 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         final PeopleService peopleService=retrofit.create(PeopleService.class);
-        Call<List<People>> info=peopleService.getModel(20);
-        info.enqueue(new Callback<List<People>>() {
+        Call<People> infos=peopleService.getModel();
+        infos.enqueue(new Callback<People>() {
             @Override
-            public void onResponse(Call<List<People>> call, Response<List<People>> response) {
+            public void onResponse(Call<People> call, Response<People> response) {
                 peopleList=response.body();
-                Log.d("mainactivity",peopleList.get(0).getName());
+                Log.d("mainactivity",peopleList.getResults().get(0).getName());
+
+
             }
 
             @Override
-            public void onFailure(Call<List<People>> call, Throwable t) {
-                t.printStackTrace();
+            public void onFailure(Call<People> call, Throwable t) {
 
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView();
+            }
+        },5000);
+
+    }
+    public void recyclerView(){
+        RecyclerView recyclerView=findViewById(R.id.peoplerecyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        PeopleAdapter adapter= new PeopleAdapter(peopleList.getResults());
+        recyclerView.setAdapter(adapter);
     }
 
 
