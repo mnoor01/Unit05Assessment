@@ -36,6 +36,7 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
     }
     public void onBind( Results results){
         name.setText(results.getName().getFirst()+" "+ results.getName().getLast());
+        location.setText(results.getLocation().getCity()+" "+results.getLocation().getState());
         Picasso.with(context).load(results.getPicture().getLarge()).into(pic);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,7 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
                 intent.putExtra("location",location.getText().toString());
                 intent.putExtra("email",email.getText().toString());
                 intent.putExtra("dob",dob.getText().toString());
+                context.startActivity(intent);
 
             }
         });
