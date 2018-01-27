@@ -13,7 +13,7 @@ import retrofit2.http.Query;
  */
 
 public interface PeopleService {
-    @GET("api/?nat=us&inc=name,location,cell,email,dob,picture&results=20")
+    @GET("?nat=us&inc=name,location,cell,email,dob,picture&results=20")
     Call<People> getModel();
 
 

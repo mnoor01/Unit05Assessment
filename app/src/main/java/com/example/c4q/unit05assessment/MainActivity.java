@@ -3,6 +3,7 @@ package com.example.c4q.unit05assessment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void retroFitStuff(){
-        Retrofit retrofit=new Retrofit.Builder().baseUrl("https://randomuser.me/")
+        Retrofit retrofit=new Retrofit.Builder().baseUrl("https://randomuser.me/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         final PeopleService peopleService=retrofit.create(PeopleService.class);
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<People> call, Response<People> response) {
                 peopleList=response.body();
-                Log.d("mainactivity",peopleList.getResults().get(0).getName());
+                recyclerView();
 
 
             }
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void recyclerView(){
         RecyclerView recyclerView=findViewById(R.id.peoplerecyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        GridLayoutManager layoutManager=new GridLayoutManager(MainActivity.this,2,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(layoutManager);
         PeopleAdapter adapter= new PeopleAdapter(peopleList.getResults());
         recyclerView.setAdapter(adapter);
     }

@@ -5,17 +5,19 @@ package com.example.c4q.unit05assessment.model;
  */
 
 public class Results {
-    private String name;
-    private String location;
+
+    private Name name;
+    private Location location;
     private String email;
     private String dob;
-    private String picture;
+    private String cell;
+    private Picture picture;
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -27,7 +29,11 @@ public class Results {
         return dob;
     }
 
-    public String getPicture() {
+    public String getCell() {
+        return cell;
+    }
+
+    public Picture getPicture() {
         return picture;
     }
 }

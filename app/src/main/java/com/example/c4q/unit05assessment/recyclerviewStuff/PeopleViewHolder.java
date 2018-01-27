@@ -35,8 +35,8 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
         context= itemView.getContext();
     }
     public void onBind( Results results){
-        name.setText(results.getName());
-        Picasso.with(context).load(results.getPicture()).into(pic);
+        name.setText(results.getName().getFirst()+" "+ results.getName().getLast());
+        Picasso.with(context).load(results.getPicture().getLarge()).into(pic);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
