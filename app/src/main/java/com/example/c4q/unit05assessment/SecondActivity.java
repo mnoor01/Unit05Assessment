@@ -3,10 +3,12 @@ package com.example.c4q.unit05assessment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
     private TextView infos;
+    private ImageView infopic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +20,6 @@ public class SecondActivity extends AppCompatActivity {
         String email= intent.getStringExtra("email");
         String dob= intent.getStringExtra("dob");
         infos.setText(location+" "+email+" "+dob);
+
     }
 }

@@ -34,15 +34,16 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
         pic=itemView.findViewById(R.id.pix);
         context= itemView.getContext();
     }
-    public void onBind( Results results){
+    public void onBind(final Results results){
         name.setText(results.getName().getFirst()+" "+ results.getName().getLast());
         location.setText(results.getLocation().getCity()+" "+results.getLocation().getState());
+        email.setText(results.getEmail());
+        dob.setText(results.getDob());
         Picasso.with(context).load(results.getPicture().getLarge()).into(pic);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(itemView.getContext(),SecondActivity.class);
-
                 intent.putExtra("location",location.getText().toString());
                 intent.putExtra("email",email.getText().toString());
                 intent.putExtra("dob",dob.getText().toString());
