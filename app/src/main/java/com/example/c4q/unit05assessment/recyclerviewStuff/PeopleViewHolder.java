@@ -25,6 +25,7 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
     private TextView dob;
     private ImageView pic;
     private Context context;
+
     public PeopleViewHolder(View itemView) {
         super(itemView);
         name=itemView.findViewById(R.id.name);
@@ -47,6 +48,7 @@ public class PeopleViewHolder extends RecyclerView.ViewHolder{
                 intent.putExtra("location",location.getText().toString());
                 intent.putExtra("email",email.getText().toString());
                 intent.putExtra("dob",dob.getText().toString());
+                intent.putExtra("picture",results.getPicture().getMedium());
                 context.startActivity(intent);
 
             }
